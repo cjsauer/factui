@@ -2,7 +2,7 @@
   (:require [rum.core :as rum]
             [factui.api :as f :include-macros true]
             [cljs.core.async :as a]
-            [factui.impl.store :as store])
+            [factui.impl.store.datascript :as store])
   (:require-macros [cljs.core.async.macros :refer [go-loop]]))
 
 (def ^:private rebuild-on-refresh (atom true))

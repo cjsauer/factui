@@ -1,7 +1,7 @@
 (ns factui.api
   (:require [factui.facts :as f]
             [factui.impl.session :as session]
-            [factui.impl.store :as store]
+            [factui.impl.store.datascript :as store]
             [factui.impl.rules]
             [factui.specs :as fs]
             [factui.specs.clara :as cs]

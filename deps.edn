@@ -13,4 +13,5 @@
          :extra-deps  {org.clojure/test.check {:mvn/version "RELEASE"}}}
   :dev  {:extra-paths ["dev" "target"]
          :extra-deps  {figwheel-sidecar {:mvn/version "0.5.12"}
-                       rum              {:mvn/version "0.10.8"}}}}}
+                       rum              {:mvn/version "0.10.8"}
+                       datascript       {:mvn/version "0.18.2"}}}}}
