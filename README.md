@@ -2,6 +2,17 @@
 
 FactUI is a library for efficiently rendering user interfaces declaratively, based on a tuple-oriented data store.
 
+## This Fork
+
+Experiments implemented in this fork:
+
+- Migrate the project to tools.deps for easier inclusion in projects (see Installation below)
+- **Use datascript as the datom store implementation**
+
+By using datascript, we gain all* of its power on top of the Clara rule engine.
+
+_*Still testing, but it's very promising so far!_
+
 ## Rationale
 
 Other ClojureScript/React frameworks have already broken important ground in establishing a pattern for data-driven interfaces: the visible UI is a pure function of data. This is a strong concept which has lead to powerful, simple UI programming idioms.
@@ -29,7 +40,7 @@ Add the following to your `deps.edn`:
 
 ```
 cjsauer/factui {:git/url "https://github.com/cjsauer/factui.git"
-                :sha     "9222bdd2778c5413792d067b81f3506935e2cdaa"}
+                :sha     "371eeee37f1459aecde991c96329beb42329f52c"}
 ```
 
 ## Usage
