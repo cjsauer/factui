@@ -13,3 +13,4 @@ pom.xml.asc
 .idea
 *.iml
 .cpcache/
+\.DS_Store
