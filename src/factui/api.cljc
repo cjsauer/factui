@@ -1,7 +1,8 @@
 (ns factui.api
   (:require [factui.facts :as f]
             [factui.impl.session :as session]
-            [factui.impl.store.datascript :as store]
+            [factui.impl.store :as fstore]
+            [factui.impl.store.datascript :as store-impl]
             [factui.impl.rules]
             [factui.specs :as fs]
             [factui.specs.clara :as cs]
@@ -36,7 +37,7 @@
   "Given a base session (as defined by `factui.api/rule-base`), add in a
    schema and return an initalized FactUI session."
   [base schema-txdata]
-  (session/session base (store/store schema-txdata)))
+  (session/session base (store-impl/store schema-txdata)))
 
 (defn now []
   #?(:cljs (.getTime (js/Date.))
@@ -193,7 +194,7 @@
   #?(:clj (println "Rebuilding session due to code reload. Logical rule state will be lost. Rebuilding...")
      :cljs (.log js/console "Rebuilding session due to code reload. Logical rule state will be lost. Rebuilding..."))
   (let [new-session (session base schema)
-        datoms (store/datoms (:store old-session))]
+        datoms (fstore/datoms (:store old-session))]
     (when-not (empty? datoms)
       (let [ops (map (fn [[e a v]] [:db/add e a v]) datoms)
             populated-session (transact-all new-session ops)]
