@@ -39,6 +39,14 @@
   [base schema-txdata]
   (session/session base (store-impl/store schema-txdata)))
 
+;; NOTE: this function leaks the underlying abstraction into api space...
+;; See the note left in `store.cljc`.
+(defn db
+  "Given a session, returns its underlying datom storage db. This a
+  datascript db, and can be used for querying, pulling, etc."
+  [session]
+  (-> session :store fstore/db))
+
 (defn now []
   #?(:cljs (.getTime (js/Date.))
      :clj (System/currentTimeMillis)))

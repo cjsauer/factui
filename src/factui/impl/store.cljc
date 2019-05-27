@@ -14,7 +14,12 @@
 
     This handles all Datomic-style semantics such as upsert, tempid resolution, and preventing duplicates")
   (schema [this] "Returns a map of {attr attributes} for the store's schema.")
-  (datoms [this] "Returns a lazy seq of datoms in this store"))
+  (datoms [this] "Returns a lazy seq of datoms in this store")
+
+  ;; NOTE: there is not an obviously suitable "DatalogDB" protocol at this time, so this function
+  ;; leaks the underlying abstaction a bit...Datascript surely provides one, but it would be nice
+  ;; to not have to weld any future store strategies to a specific impl's protocol...hmmm....
+  (db [this] "Returns the store's underlying database capable of handling queries, pulls, etc"))
 
 (def ^:no-doc base-schema
   "Initial built-in schema"

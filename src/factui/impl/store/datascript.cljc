@@ -61,7 +61,9 @@
   (schema [store] attrs)
   (datoms [store]
     (let [dsdatoms (d/datoms (:db store) :eavt)]
-      (map dsdatom->datom dsdatoms))) )
+      (map dsdatom->datom dsdatoms)))
+  (db [store]
+    (:db store)))
 
 (defn store
   [schema]
