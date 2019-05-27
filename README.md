@@ -40,7 +40,7 @@ Add the following to your `deps.edn`:
 
 ```
 cjsauer/factui {:git/url "https://github.com/cjsauer/factui.git"
-                :sha     "1203f32fff24fc3e09cf0ab6559c54761308f70e"}
+                :sha     "169e0960a4e72a1a7b2987fdd4e8759e6f38c5c5"}
 ```
 
 ## Usage
