@@ -95,6 +95,8 @@
   (fstore/schema (store sample-schema))
   (fstore/datoms (store sample-schema))
 
+  (:db (store sample-schema))
+
   (let [db     (d/empty-db)
         res    (d/with db [[:db/add -1 :test/item 10]])
         new-db (:db-after res)
@@ -114,7 +116,8 @@
         txdata                    [[:db/retractEntity [:task/title "Task 1"]]]
         [ins-datoms ret-datoms _] (fstore/resolve next-store txdata)
         nnext-store               (fstore/update next-store ins-datoms ret-datoms)]
-    (d/with (:db nnext-store) [[:db.fn/retractAttribute 2 :task/title]])
+    (fstore/datoms next-store)
+    #_(d/with (:db nnext-store) [[:db.fn/retractAttribute 2 :task/title]])
     #_(d/pull (:db nnext-store) '[*] [:task/title "Task 2"])
     #_(datoms nnext-store))
 
