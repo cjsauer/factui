@@ -63,5 +63,4 @@
                               }}
              :dev {:lein-tools-deps/config {:aliases [:clj :dev]}
                    :plugins [[lein-figwheel "0.5.12" :exclusions [org.clojure/clojurescript]]]
-                   :clean-targets ^{:protect false} ["target" :target-path]
                    :figwheel {:open-file-command "emacsclient"}}})
